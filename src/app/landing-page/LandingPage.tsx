@@ -43,7 +43,7 @@ const LandingPage = (props: Props) => {
               width="125"
               height="125"
               alt="arrow"
-              className="absolute top-1/2 right-0 transform translate-x-1/2 -translate-y-1/2"
+              className="absolute top-1/2 right-0 hidden md:block transform translate-x-1/2 -translate-y-1/2"
             />
             <p>1. Add a prompt and describe the requirements for your form.</p>
           </li>
@@ -60,7 +60,7 @@ const LandingPage = (props: Props) => {
               width="125"
               height="125"
               alt="arrow"
-              className="absolute top-1/2 right-0 transform translate-x-1/2 -translate-y-1/2 scale-x-[-1] rotate-180"
+              className="absolute top-1/2 right-0 transform hidden md:block translate-x-1/2 -translate-y-1/2 scale-x-[-1] rotate-180"
             />
             <p>2. Generate the form.</p>
           </li>
