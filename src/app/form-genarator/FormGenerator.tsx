@@ -12,14 +12,14 @@ import {
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 
-import { generateForm } from '@/actions/generateForm';
+import { generateForm } from '@/action/generateForm';
 import { useFormState, useFormStatus } from 'react-dom';
 
 import { useSession, signIn } from 'next-auth/react';
-import { navigate } from '../actions/navigateToForm';
+// import { navigate } from '../actions/navigateToForm';
 
 import { Plus } from 'lucide-react';
-import { usePlausible } from 'next-plausible';
+// import { usePlausible } from 'next-plausible';
 
 type Props = {};
 
@@ -43,17 +43,17 @@ const FormGenerator = (props: Props) => {
   const [state, formAction] = useFormState(generateForm, initialState);
   const [open, setOpen] = useState(false);
   const session = useSession();
-  const plausible = usePlausible();
+  // const plausible = usePlausible();
 
   useEffect(() => {
     if (state.message === 'success') {
       setOpen(false);
-      navigate(state.data.formId);
+      // navigate(state.data.formId);
     }
   }, [state.message]);
 
   const onFormCreate = () => {
-    plausible('create-form');
+    // plausible('create-form');
     if (session.data?.user) {
       setOpen(true);
     } else {
