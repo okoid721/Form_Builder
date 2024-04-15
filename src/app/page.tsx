@@ -1,14 +1,13 @@
-import { Button } from '@/components/ui/button';
-import FormGenerator from './form-genarator/FormGenerator';
 import Header from '@/components/ui/header';
 import { SessionProvider } from 'next-auth/react';
+import LandingPage from './landing-page/LandingPage';
 
 export default function Home() {
   return (
     <SessionProvider>
       <Header />
-      <main className="flex min-h-screen flex-col items-center justify-between p-24">
-        <FormGenerator />
+      <main className="flex min-h-screen flex-col items-center">
+        <LandingPage />
       </main>
     </SessionProvider>
   );
