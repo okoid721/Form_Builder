@@ -3,7 +3,7 @@
 import { revalidatePath } from 'next/cache';
 import { z } from 'zod';
 
-// import { saveForm } from './mutateForm';
+import { saveForm } from './mutateForm';
 
 export async function generateForm(
   prevState: {
@@ -25,7 +25,7 @@ export async function generateForm(
     };
   }
 
-  if (!process.env.OPENAI) {
+  if (!process.env.OPENAI_API_KEY) {
     return {
       message: 'No OpenAI API key found',
     };
@@ -39,7 +39,7 @@ export async function generateForm(
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${process.env.OPENAI ?? ''}`,
+        Authorization: `Bearer ${process.env.OPENAI_API_KEY ?? ''}`,
       },
       method: 'POST',
       body: JSON.stringify({
@@ -54,18 +54,18 @@ export async function generateForm(
     });
     const json = await response.json();
 
-    // const responseObj = JSON.parse(json.choices[0].message.content);
+    const responseObj = JSON.parse(json.choices[0].message.content);
 
-    // const dbFormId = await saveForm({
-    //   name: responseObj.name,
-    //   description: responseObj.description,
-    //   questions: responseObj.questions,
-    // });
+    const dbFormId = await saveForm({
+      name: responseObj.name,
+      description: responseObj.description,
+      questions: responseObj.questions,
+    });
 
     revalidatePath('/');
     return {
       message: 'success',
-      data: json,
+      data: { formId: dbFormId },
     };
   } catch (e) {
     console.log(e);
