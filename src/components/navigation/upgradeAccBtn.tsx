@@ -1,11 +1,11 @@
 import React from 'react';
 import Link from 'next/link';
-import { getUserForms } from '@/app/actions/getUserForms';
+import { getUserForms } from '@/app/action/getUserForms';
 import { MAX_FREE_FROMS } from '@/lib/utils';
 import ProgressBar from '../progressBar';
 import SubscribeBtn from '@/app/subscription/SubscribeBtn';
 import { auth } from '@/auth';
-import { getUserSubscription } from '@/app/actions/userSubscriptions';
+import { getUserSubscription } from '@/app/action/userSubscriptions';
 
 type Props = {};
 
