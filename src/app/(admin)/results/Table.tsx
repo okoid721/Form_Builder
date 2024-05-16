@@ -14,7 +14,7 @@ import {
   flexRender,
   getCoreRowModel,
   useReactTable,
-} from '@/tanstack/react-table';
+} from '@tanstack/react-table';
 
 type FieldOption = InferSelectModel<typeof fieldOptions>;
 
